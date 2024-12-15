@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio of Ahmad Al Qayyem - Motivated Computer Science undergraduate with expertise in Cybersecurity and Web Development.">
+  <meta name="keywords" content="Portfolio, Web Development, Cybersecurity, Ahmad Al Qayyem, Computer Science">
+  <title>Ahmad Al Qayyem | Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    /* General Styles */
+    body {
+      margin: 0;
+      font-family: 'Montserrat', sans-serif;
+      color: #333;
+      background-color: #eef2f3;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: #007bff;
+      transition: color 0.3s;
+    }
+
+    a:hover {
+      color: #0056b3;
+    }
+
+    /* Header */
+    header {
+      background-color: #343a40;
+      color: white;
+      padding: 20px 30px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 600;
+    }
+
+    nav {
+      position: relative;
+    }
+
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      flex-direction: column;
+      justify-content: center;
+      height: 24px;
+      width: 30px;
+    }
+
+    .hamburger div {
+      height: 3px;
+      background: white;
+      margin: 4px;
+      transition: 0.3s;
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav ul li {
+      margin: 0 15px;
+    }
+
+    nav ul li a {
+      color: white;
+      padding: 10px 15px;
+      border-radius: 5px;
+      transition: background 0.3s;
+    }
+
+    nav ul li a:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Responsive Navigation */
+    @media screen and (max-width: 768px) {
+      .hamburger {
+        display: flex;
+      }
+
+      .nav-menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        right: 0;
+        top: 60px;
+        width: 250px;
+        background: #343a40;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        padding: 10px 0;
+      }
+
+      .nav-menu.active {
+        display: flex;
+      }
+
+      nav ul {
+        flex-direction: column;
+        padding: 0;
+      }
+
+      nav ul li {
+        margin: 10px 0;
+        text-align: center;
+      }
+    }
+
+    /* Hero Section */
+    .hero {
+      text-align: center;
+      background: linear-gradient(to right, #6a11cb, #2575fc);
+      color: white;
+      padding: 80px 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .hero h2 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+
+    .hero button {
+      background: #ff4757;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      transition: background 0.3s, transform 0.2s;
+      cursor: pointer;
+    }
+
+    .hero button:hover {
+      background: #e84118;
+      transform: scale(1.05);
+    }
+
+    /* Section Styling */
+    .profile-container, .skills, .projects {
+      background: white;
+      margin: 20px auto;
+      padding: 20px;
+      max-width: 800px;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .profile-container:hover, .skills:hover, .projects:hover {
+      transform: translateY(-5px);
+    }
+
+    .profile {
+      text-align: center;
+    }
+
+    .profile img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 3px solid #6a11cb;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .profile img:hover {
+      transform: scale(1.05);
+    }
+
+    .contact-info {
+      margin-top: 10px;
+    }
+
+    .contact-info span {
+      display: block;
+      margin: 5px 0;
+      font-size: 0.9rem;
+    }
+
+    .section-title {
+      background-color: #6a11cb;
+      color: white;
+      padding: 10px;
+      text-align: center;
+      border-radius: 5px;
+      font-weight: 600;
+    }
+
+    .section-content {
+      font-size: 1rem;
+      color: #333;
+      line-height: 1.6;
+      margin-top: 10px;
+    }
+
+    .skills {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      gap: 15px;
+      justify-items: center;
+    }
+
+    .skills .skill {
+      text-align: center;
+      background: #f7f7f7;
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s;
+    }
+
+    .skills .skill:hover {
+      transform: translateY(-3px);
+    }
+
+    .skills .skill img {
+      width: 60px;
+      height: 60px;
+    }
+
+    .skills .skill p {
+      margin-top: 8px;
+      font-weight: 500;
+    }
+
+    /* Footer */
+    footer {
+      background: #343a40;
+      color: white;
+      padding: 15px 0;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    footer a {
+      color: #007bff;
+      text-decoration: underline;
+    }
+  </style>
+  <script>
+    window.onscroll = function () {
+      const header = document.querySelector('header');
+      if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    };
+
+    function toggleMenu() {
+      const navMenu = document.querySelector('.nav-menu');
+      navMenu.classList.toggle('active');
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Ahmad Al Qayyem</h1>
+    <div class="hamburger" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <nav>
+        <ul class="nav-menu">
+          <li><a href="index.html">Home</a></li>
+          <li class="dropdown">
+            <div class="dropdown-content">
+              <a href="cover-letter.html">Cover Letter</a>
+              <a href="development-plan.html">Development Plan</a>
+              <a href="job-shadowing.html">Job Shadowing</a>
+              <a href="communication-comic.html">Comic Strip</a>
+              <a href="learning-style.html">Learning Style</a>
+            </div>
+          </li>
+        </ul>
+      </nav>
+  </header>
+
+  <div class="hero">
+  <h2>Greetings!</h2>
+  <p>I'm Ahmad, a passionate Cybersecurity Enthusiast and Web Developer.</p>
+  <button onclick="window.location.href='cv.html'">Explore My CV</button>
+</div>
+
+<div class="profile-container" id="about">
+  <div class="profile">
+    <h3>Who Am I?</h3>
+    <div class="profile-content">
+      <img id="profile-img" src="https://i.ibb.co/gTWPfxB/Whats-App-Image-2024-12-15-at-3-58-58-PM.jpg" alt="Profile Image">
+      <div class="about-text">
+        <p>Currently pursuing a Bachelor's in Computer Science, I specialize in Cybersecurity and Web Development. My journey is fueled by a deep curiosity and a commitment to solving complex problems.</p>
+        <div class="contact-info">
+          <span>📍 Location: Tripoli, Lebanon</span>
+          <span>📞 Phone: 76326400</span>
+          <span>✉️ Email: <a href="mailto:ahmadqayyem327@gmail.com">ahmadqayyem327@gmail.com</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="profile-container" id="skills">
+  <div class="section-title">My Skill Set</div>
+  <p>Here are the tools and technologies I wield:</p>
+  <div class="skills">
+    <div class="skill">
+      <img src="https://img.icons8.com/color/48/000000/python.png" alt="Python">
+      <p>Python</p>
+    </div>
+    <div class="skill">
+      <img src="https://img.icons8.com/color/48/000000/javascript.png" alt="JavaScript">
+      <p>JavaScript</p>
+    </div>
+    <div class="skill">
+      <img src="https://img.icons8.com/color/48/000000/html-5.png" alt="HTML">
+      <p>HTML</p>
+    </div>
+    <div class="skill">
+      <img src="https://img.icons8.com/color/48/000000/css3.png" alt="CSS">
+      <p>CSS</p>
+    </div>
+    <div class="skill">
+      <img src="https://img.icons8.com/color/48/000000/sql.png" alt="SQL">
+      <p>SQL</p>
+    </div>
+   
+  </div>
+</div>
+
+
+  <footer>
+    <p>&copy; 2024 Ahmad Al Qayyem. All rights reserved.</p>
+  </footer>
+</body>
+</html>
